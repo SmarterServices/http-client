@@ -38,7 +38,7 @@ gulp.task('test', function (cb) {
         });
 });
 gulp.task('lint', function() {
-    return gulp.src(['lib/handlers/*.js', 'lib/*.js', 'lib/outputs/*.js'])
+    return gulp.src(['./index.js', 'lib/*.js', 'lib/outputs/*.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });

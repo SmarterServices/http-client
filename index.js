@@ -10,7 +10,7 @@ module.exports = function(Obj,callback) {
     var i = 0;
     function makeReq() {
         if(!Obj.headers) {
-            Obj.headers = {}
+            Obj.headers = {};
         }
         Obj.headers = {
             "attempt": i+1,
@@ -24,14 +24,14 @@ module.exports = function(Obj,callback) {
             } else {
                 return callback(err,r);
             }
-        })
+        });
     }
     makeReq();
     function retryRequest(count,err) {
         if( count < delay.length) {
-            setTimeout(function(){makeReq()},delay[count]);
+            setTimeout(function(){makeReq();},delay[count]);
         } else {
-            return callback(err,null)
+            return callback(err,null);
         }
         i++;
     }
