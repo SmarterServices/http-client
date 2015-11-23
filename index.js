@@ -20,18 +20,18 @@ module.exports = function(Obj,callback) {
         };
         request(Obj,function(err,body,r) {
             if(nest.get(err,'code') === 'ETIMEDOUT') {
-                retryRequest(i);
+                retryRequest(i,err);
             } else {
                 return callback(err,r);
             }
         })
     }
     makeReq();
-    function retryRequest(count) {
+    function retryRequest(count,err) {
         if( count < delay.length) {
             setTimeout(function(){makeReq()},delay[count]);
         } else {
-            return callback({err:'Max amount of retries hit'},null)
+            return callback(err,null)
         }
         i++;
     }
