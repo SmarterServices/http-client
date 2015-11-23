@@ -1,0 +1,16 @@
+{
+  "name": "@smarterservices/http-client",
+  "version": "0.0.1",
+  "description": "A http client that adds smart functionality",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jordan Piepkow",
+  "license": "ISC",
+  "dependencies": {
+    "nestcheck": "^0.2.3",
+    "request": "^2.67.0",
+    "uuid": "^2.0.1"
+  }
+}
