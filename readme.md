@@ -1,5 +1,8 @@
 Http-client
 ===
+##Running Tests:
+	npm install pm2 -g 
+	npm test
 ##Getting Started:
 
 	npm i @smarterservices/http-client --save

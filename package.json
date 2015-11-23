@@ -1,6 +1,6 @@
 {
   "name": "@smarterservices/http-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A http client that adds smart functionality",
   "main": "index.js",
   "scripts": {
