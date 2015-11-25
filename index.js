@@ -7,18 +7,16 @@ module.exports = function(Obj,callback) {
     var delay = config.delay.split(',').map(function(i) {
         return parseInt(i,10);
     });
-        Obj.timeout = config.timeout;
+    Obj.timeout = config.timeout;
     var i = 0;
     function makeReq() {
         if(!Obj.headers) {
             Obj.headers = {};
         }
-        Obj.headers = {
-            "attempt": i+1,
-            "max_retry": delay.length +1,
-            "tracking_id": uuid.v1()
+        Obj.headers.attempt= i+1;
+        Obj.headers.max_retry= delay.length +1;
+        Obj.headers.tracking_id= uuid.v1();
 
-        };
         request(Obj,function(err,body,r) {
             if(nest.get(err,'code') === 'ETIMEDOUT') {
                 retryRequest(i,err);
@@ -26,12 +24,19 @@ module.exports = function(Obj,callback) {
                 if(!err) {
                     if(Obj.allow) {
                         postprocess(r,Obj.allow,function(err) {
-                           if(err) {
-                               return callback(err,null);
-                           } else {
-                               return callback(null,r);
-                           }
+                            if(err) {
+                                return callback(err,null);
+                            } else {
+                                return callback(null,r);
+                            }
                         });
+                    }
+                    else {
+                        if(err) {
+                            return callback(err,null);
+                        } else {
+                            return callback(null,r);
+                        }
                     }
                 }
             }

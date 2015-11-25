@@ -12,7 +12,7 @@ describe('Testing index.js', function() {
                 done();
             });
         });
-    it('Should run through all retries and then timeout', function(done) {
+    it('Should run and not have to retry', function(done) {
         httpClient({
             method:'GET',
             url:'http://localhost:3000/short'

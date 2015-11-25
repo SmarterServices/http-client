@@ -7,6 +7,7 @@ app.get('/long', function (req, res) {
 });
 
 app.get('/short', function (req, res) {
+    console.log('happened');
     setTimeout(function() {res.send({res:'returned after 2 seconds'})},2000)
 });
 
