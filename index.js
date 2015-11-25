@@ -1,4 +1,5 @@
 var request = require('request');
+var postprocess = require('./lib/postprocess.js');
 var config = require('./config.json');
 var uuid = require('uuid');
 var nest = require('nestcheck');
@@ -22,7 +23,17 @@ module.exports = function(Obj,callback) {
             if(nest.get(err,'code') === 'ETIMEDOUT') {
                 retryRequest(i,err);
             } else {
-                return callback(err,r);
+                if(!err) {
+                    if(Obj.allow) {
+                        postprocess(r,Obj.allow,function(err) {
+                           if(err) {
+                               return callback(err,null);
+                           } else {
+                               return callback(null,r);
+                           }
+                        });
+                    }
+                }
             }
         });
     }
@@ -37,3 +48,5 @@ module.exports = function(Obj,callback) {
     }
 
 };
+
+
