@@ -23,6 +23,8 @@ The second argument is the callback for returning the results.
 
 ##Configurations
 
-Current version of Http-client supports **Retry**
+Current version of Http-client supports **Retry** and  **PostProcessing**
+
+To enable post processing pass in **allow** into the request object with Must and MustNot Obj.
 
 To change the delay,retry limit or timeout go to config.json in the module folder after installation
