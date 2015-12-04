@@ -18,6 +18,9 @@ module.exports = function(Obj,callback) {
         Obj.headers.tracking_id= uuid.v1();
 
         request(Obj,function(err,body,r) {
+            if(err) {
+                return callback(err,null);
+            }
             if(nest.get(err,'code') === 'ETIMEDOUT') {
                 retryRequest(i,err);
             } else {
