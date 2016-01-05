@@ -26,9 +26,9 @@ module.exports = function(Obj,callback) {
             } else {
                 if(!err) {
                     if(Obj.allow) {
-                        postprocess(r,Obj.allow,function(err) {
-                            if(err) {
-                                return callback(err,null);
+                        postprocess(r,Obj.allow,function(err,res) {
+                            if(res === false) {
+                                return callback('No access',null);
                             } else {
                                 return callback(null,r);
                             }

@@ -1,12 +1,15 @@
-  {
+{
   "name": "smart-http-client",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "A http client that adds smart functionality",
   "main": "index.js",
   "scripts": {
-    "test": "pm2 start server.js; gulp test"
+    "test": "pm2 start server.js; gulp test",
+    "start": "node server.js"
   },
-  "author": "Jordan Piepkow",
+  "author": {
+    "name": "Jordan Piepkow"
+  },
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.3",
@@ -25,5 +28,11 @@
     "gulp-run": "^1.6.10",
     "gulp-yuidoc": "^0.1.2",
     "mocha": "^2.3.0"
-  }
+  },
+  "readme": "Http-client\n===\n##Running Tests:\n\tnpm install pm2 -g \n\tnpm test\n##Getting Started:\n\n\tnpm i @smarterservices/http-client --save\n\t\n##Usage:\n\tvar httpClient = require('http-client');\n\t\n\thttpClient(REQUESTOBJECT,function(err,r) {\n\n\tConsole.log('Results returned here!')\n\t});\n\t\nThe first argument passed to httpClient is a request object\n\n####To find what can be passed in to this object look <a href=\"https://www.npmjs.com/package/request\">Here</a>\t\n\nThe second argument is the callback for returning the results.\n\n##Configurations\n\nCurrent version of Http-client supports **Retry** and  **PostProcessing**\n\nTo enable post processing pass in **allow** into the request object with Must and MustNot Obj.\n\nTo change the delay,retry limit or timeout go to config.json in the module folder after installation",
+  "readmeFilename": "readme.md",
+  "gitHead": "79eb89024787d938d78b27f5649bc50a5f33be7d",
+  "_id": "smart-http-client@0.0.7",
+  "_shasum": "a4ebd119aceb8902f50028fd869264473bba459b",
+  "_from": "smart-http-client@*"
 }
